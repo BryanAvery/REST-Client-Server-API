@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
 
 namespace ServerAPI
 {
@@ -10,7 +9,6 @@ namespace ServerAPI
         [HttpGet]
         public PasswordResponse Get()
         {
-            //v1
             return new PasswordResponse
             {
                 Password = Guid.NewGuid().ToString().Substring(0, 6) + Guid.NewGuid().ToString().Substring(0, 6),

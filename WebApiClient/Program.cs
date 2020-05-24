@@ -24,18 +24,10 @@ namespace WebApiClient
 
         private static async Task<PasswordResponse> ProcessRepositories()
         {
-
-
-            HttpClientHandler clientHandler = new HttpClientHandler();
-            clientHandler.ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => { return true; };
-
-            // Pass the handler to httpclient(from you are calling api)
-            HttpClient client = new HttpClient(clientHandler);
-
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Add("User-Agent", ".NET WebApi Client");
 
-            var streamTask = client.GetStreamAsync("https://127.0.0.1:5001/password");
+            var streamTask = client.GetStreamAsync("http://localhost:5001/password");
             var passwordResponse = await JsonSerializer.DeserializeAsync<PasswordResponse>(await streamTask);
 
            return passwordResponse;
