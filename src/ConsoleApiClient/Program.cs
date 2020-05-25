@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace WebApiClient
+namespace ConsoleApiClient
 {
     class Program
     {
@@ -25,7 +25,7 @@ namespace WebApiClient
         private static async Task<PasswordResponse> ProcessRepositories()
         {
             client.DefaultRequestHeaders.Accept.Clear();
-            client.DefaultRequestHeaders.Add("User-Agent", ".NET WebApi Client");
+            client.DefaultRequestHeaders.Add("User-Agent", ".NET ConsoleApi Client");
 
             var streamTask = client.GetStreamAsync("http://localhost:5001/password");
             var passwordResponse = await JsonSerializer.DeserializeAsync<PasswordResponse>(await streamTask);

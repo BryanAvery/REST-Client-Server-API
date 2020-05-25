@@ -1,0 +1,25 @@
+version: '3.4'
+
+services:
+  password-api:
+    build: 
+      context: ../
+      dockerfile: ./Docker/ServerApi/Dockerfile
+    image: password-api:v1
+    ports:
+      - 5001:5001
+    networks:
+      - password-net
+
+  console-client-api:
+    build: 
+      context: ../
+      dockerfile: ./Docker/ConsoleApiClient/Dockerfile
+    image: web-client-api:v1
+    depends_on:
+      - password-api
+    networks:
+      - password-net
+
+networks:
+  password-net:

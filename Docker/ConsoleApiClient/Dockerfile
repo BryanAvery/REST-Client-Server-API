@@ -2,10 +2,10 @@
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS builder
 
 WORKDIR /src
-COPY src/WebApiClient/WebApiClient.csproj .
+COPY ./src/ConsoleApiClient/ConsoleApiClient.csproj .
 RUN dotnet restore
 
-COPY src/WebApiClient .
+COPY ./src/ConsoleApiClient .
 RUN dotnet publish
 
 # app image
