@@ -9,9 +9,10 @@ COPY ./src/ConsoleApiClient .
 RUN dotnet publish
 
 # app image
-FROM mcr.microsoft.com/dotnet/core/aspnet:3.1
+FROM mcr.microsoft.com/dotnet/core/runtime:3.1
 
 CMD ["dotnet", "WebApiClient.dll"]
 
 WORKDIR /dotnetapp
 COPY --from=builder /src/bin/Debug/netcoreapp3.1/publish .
+ENTRYPOINT ["dotnet", "ConsoleApiClient.dll"]
